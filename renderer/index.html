@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>YTM Overlay</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="overlay">
+    <div id="album-art">
+      <img id="cover-image" src="" alt="Album Cover">
+    </div>
+    <div id="info">
+      <div id="title-container">
+        <div id="title">Sin reproducción</div>
+      </div>
+      <div id="artist-container">
+        <div id="artist"></div>
+      </div>
+      <div id="progress-container">
+        <div id="progress-bar"></div>
+      </div>
+      <div id="bottom-controls">
+        <div id="playback-controls">
+          <button id="prev" title="Anterior">⏮</button>
+          <button id="play" title="Reproducir/Pausar">▶</button>
+          <button id="next" title="Siguiente">⏭</button>
+        </div>
+        <div id="time">00:00 / 00:00</div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="keyboard-shortcuts" class="tooltip">
+    <span>Ctrl+⇧+Y para mostrar/ocultar</span>
+  </div>
+  
+  <script src="renderer.js"></script>
+</body>
+</html>

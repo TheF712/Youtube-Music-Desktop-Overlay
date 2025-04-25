@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>YouTube Music</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    webview {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <webview src="https://music.youtube.com" preload="../ytm_webview_preload.js"></webview>
+  
+  <script>
+    const webview = document.querySelector('webview');
+    
+    webview.addEventListener('dom-ready', () => {
+      console.log('YouTube Music webview loaded');
+      
+      // Puedes abrir las herramientas de desarrollo del webview para depurar
+      // webview.openDevTools();
+    });
+    
+    // Escuchar mensajes desde el preload script del webview
+    webview.addEventListener('ipc-message', (event) => {
+      if (event.channel === 'ytm-track-info') {
+        // Enviar al proceso principal
+        window.ytmBridge.sendTrackInfo(event.args[0]);
+      } else if (event.channel === 'toggle-overlay') {
+        // Alternar la visibilidad del overlay
+        window.ytmBridge.toggleOverlay();
+      }
+    });
+    
+    // Escuchar comandos desde el proceso principal
+    window.ytmBridge.onCommand((command) => {
+      if (webview) {
+        webview.send('ytm-execute-command', command);
+      }
+    });
+  </script>
+</body>
+</html>

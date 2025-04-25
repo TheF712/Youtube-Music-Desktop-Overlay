@@ -1,0 +1,28 @@
+{
+  "name": "ytm-overlay",
+  "version": "1.0.0",
+  "description": "Youtube Music en Aplicación y con un Overlay",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.thef712.ytmoverlay",
+    "productName": "YTM Overlay",
+    "mac": {
+      "category": "public.app-category.music",
+      "target": "dmg",
+      "icon": "icon.icns"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "commonjs",
+  "devDependencies": {
+    "electron": "^35.2.0",
+    "electron-builder": "^26.0.12"
+  }
+}
